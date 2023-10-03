@@ -2,10 +2,22 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { useEffect } from "react";
+import {io} from "socket.io-client";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  useEffect(() => {
+    const socket = io("http://localhost:3001");
+    socket.on("connect", () => {
+      console.log("socket connected");
+    });
+    socket.on("subscribe", (data) => {
+      console.log(data);
+    })
+  }, []);
+
   return (
     <>
       <Head>
