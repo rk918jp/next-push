@@ -8,15 +8,27 @@ import {io} from "socket.io-client";
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  useEffect(() => {
-    const socket = io("http://localhost:3001");
-    socket.on("connect", () => {
-      console.log("socket connected");
-    });
-    socket.on("subscribe", (data) => {
-      console.log(data);
-    })
-  }, []);
+  // NOTE: socket.ioでsubscribeするサンプル
+  // useEffect(() => {
+  //   const socket = io("http://localhost:3001");
+  //   socket.on("connect", () => {
+  //     console.log("socket connected");
+  //   });
+  //   socket.on("subscribe", (data) => {
+  //     console.log(data);
+  //   })
+  // }, []);
+
+  // NOTE: WebSocketでsubscribeするサンプル
+  // useEffect(() => {
+  //   const webSocket = new WebSocket("ws://localhost:3002");
+  //   webSocket.addEventListener('open', (e) => {
+  //     console.log("WS connection opened", e);
+  //   });
+  //   webSocket.addEventListener('message', (e) => {
+  //     console.log("WS message received", e);
+  //   });
+  // }, []);
 
   return (
     <>
